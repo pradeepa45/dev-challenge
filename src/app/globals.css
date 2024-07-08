@@ -4,26 +4,36 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
+  --text-rgb: 31, 33, 40;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --shadow-sm-rgb: 20, 20, 20, 0.12;
+  --shadow-lg-rgb: 20, 20, 20,0.1;
+  --primary-rgb: 255, 206, 34;
+  --primary-hover-rgb:  255, 216, 77;
+  --blue-rgb: 80, 135, 248;
+  --blue-hover-rgb: 36, 105, 246;
+  --divider-gray-rgb: 205, 205, 205;
+  --border-gray-rgb: 238, 238, 238;
+  --border-gray-hover-rgb: 189, 189, 189;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: rgb(var(--text-rgb));
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18.2px;
+  text-align: left;
+}
+
+input[type="checkbox"] {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 @layer utilities {

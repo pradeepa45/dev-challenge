@@ -8,10 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        primary: "rgb(var(--primary-rgb))",
+        "primary-hover": "rgb(var(--primary-hover-rgb))",
+        blue: "rgb(var(--blue-rgb))",
+        "blue-hover": "rgb(var(--blue-hover-rgb))",
+        "divider-gray": "rgb(var(--divider-gray-rgb))",
+        "border-gray": "rgb(var(--border-gray-rgb))",
+        "border-gray-hover": "rgb(var(--border-gray-hover-rgb))",
+      },
+      boxShadow: {
+        dual: "0px 8px 15px 0px rgba(var(--shadow-sm-rgb)), 0px 0px 4px 0px rgba(var(--shadow-lg-rgb))",
+      },
+      screens: {
+        phone: "640px",
+        tablet: "768px",
+        laptop: "1024px",
+        desktop: "1280px",
       },
     },
   },
