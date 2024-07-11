@@ -11,7 +11,7 @@ export default function Checkbox({
   onChange,
 }: CheckboxProps) {
   return (
-    <div className="group">
+    <div className="group min-w-[340px]">
       <label
         htmlFor={name}
         className="text-sm flex justify-between items-center py-2"

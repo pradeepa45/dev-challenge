@@ -1,8 +1,8 @@
-export interface Option {
-  name: string;
-  selected: boolean;
-  slug: string;
-  disabled: boolean;
+export interface Task {
+  id: string;
+  title: string;
+  completed: boolean;
+  date: string;
 }
 
 export interface ButtonProps {
