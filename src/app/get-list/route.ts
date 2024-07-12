@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
+
 import { prismaClient } from "../libs/prisma";
+import { Task } from "../../../prisma/generated/client";
 
 export async function POST(req: Request) {
   const { date } = await req.json();
@@ -15,7 +17,7 @@ export async function POST(req: Request) {
         daily: true,
       },
     });
-    result = dailytasks.map((task) => {
+    result = dailytasks.map((task: Task) => {
       return {
         ...task,
         date,
