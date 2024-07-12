@@ -3,12 +3,13 @@
 import React from "react";
 import { animated } from "@react-spring/web";
 
-import Button from "./Button";
-import Checkbox from "./Checkbox";
-import Divider from "../Divider";
-import { Task } from "../types";
-import Input from "./Input";
-import updateTask from "../api/updateTask";
+import Button from "../Button";
+import Divider from "../../Divider";
+import { Task } from "../../types";
+import Input from "../Input";
+import Option from "./Option";
+import Checkbox from "../Checkbox";
+import addTask from "@/app/api/addTask";
 
 interface MultiSelectProps {
   selectAll: boolean;
@@ -23,19 +24,6 @@ export default function MultiSelect({
   const [selectedOptions, setSelectedOptions] = React.useState(options);
   const [newTaskName, setNewTask] = React.useState("");
 
-  const handleCheckboxChange = async (option: any) => {
-    const allSelected = selectedOptions.every(
-      (option: Task) => option.completed
-    );
-    setSelectAllOptions(allSelected);
-    await updateTask({
-      task: {
-        ...option,
-        completed: !option.completed,
-      },
-    });
-  };
-
   const toggleSelectAll = () => {
     setSelectAllOptions(!selectAllOptions);
     const newSelectedOptions = options.map((option: Task) => {
@@ -48,27 +36,34 @@ export default function MultiSelect({
     setNewTask(e.target.value);
   };
 
+  const handleClick = async () => {
+    await addTask({ name: newTaskName });
+  };
+
   return (
     <animated.div className="flex flex-col px-[22px] rounded-md shadow-dual border border-border-gray py-2.5">
-      <Checkbox
-        label="All done!"
-        name="selectAll"
-        checked={selectAllOptions}
-        onChange={toggleSelectAll}
+      <div className="flex justify-between items-center">
+        <p>All done!</p>
+        <Checkbox
+          checked={selectAllOptions}
+          onChange={toggleSelectAll}
+          name="selectAll"
+        />
+      </div>
+      <Divider />
+      <Input
+        value={newTaskName}
+        onChange={handleChange}
+        label="New task"
+        cta={handleClick}
       />
       <Divider />
-      <Input value={newTaskName} onChange={handleChange} label="New task" />
-      <Divider />
       <div className="grid grid-cols-2 gap-x-4">
-        {selectedOptions.map((option: Task) => (
-          <Checkbox
-            key={option.id}
-            label={option.title}
-            name={option.title}
-            checked={option.completed}
-            onChange={() => handleCheckboxChange(option)}
-          />
-        ))}
+        {selectedOptions
+          .sort((a, b) => parseInt(a.id) - parseInt(b.id))
+          .map((option: Task) => (
+            <Option key={option.id} task={option} />
+          ))}
       </div>
       <Divider />
       <Button>Done</Button>

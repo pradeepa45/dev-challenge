@@ -10,11 +10,16 @@ export async function POST(req: Request) {
     },
   });
   if (!result) {
-    await prismaClient.day.create({
-      data: {
-        date,
-        allDone: false,
+    const dailytasks = await prismaClient.task.findMany({
+      where: {
+        daily: true,
       },
+    });
+    result = dailytasks.map((task) => {
+      return {
+        ...task,
+        date,
+      };
     });
   }
   await prismaClient.$disconnect();

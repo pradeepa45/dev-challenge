@@ -1,7 +1,6 @@
-import moment from "moment";
+import { date } from "../libs/date";
 
 export default async function getListOfTheDay() {
-  const date = moment().format(`DD/MM/YYYY`);
   const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/get-list`, {
     method: "POST",
     body: JSON.stringify({

@@ -3,6 +3,7 @@ export interface Task {
   title: string;
   completed: boolean;
   date: string;
+  daily?: boolean;
 }
 
 export interface ButtonProps {
@@ -12,7 +13,7 @@ export interface ButtonProps {
 
 export interface CheckboxProps {
   name: string;
-  label: string;
+  label?: string;
   checked: boolean;
   onChange: () => void;
 }

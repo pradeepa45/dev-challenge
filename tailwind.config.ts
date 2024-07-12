@@ -19,6 +19,7 @@ const config: Config = {
       },
       boxShadow: {
         dual: "0px 8px 15px 0px rgba(var(--shadow-sm-rgb)), 0px 0px 4px 0px rgba(var(--shadow-lg-rgb))",
+        neon: "inset 0 0 0.5em 0 rgb(var(--primary-rgb)), 0 0 0.5em 0 rgb(var(--primary-rgb));",
       },
       screens: {
         phone: "640px",

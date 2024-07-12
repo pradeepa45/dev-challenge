@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Quicksand } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 
-const monteserrat = Montserrat({ subsets: ["latin"] });
+const quicksand = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Ellty",
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={monteserrat.className}>
+      <body className={quicksand.className}>
         {children}
         <Analytics />
       </body>
